@@ -6,16 +6,34 @@ const btn = document.querySelector('.custom');
 //append them to container
 
 for (let i = 0; i < 256; i++) {
-    let box = document.createElement('div');
-    box.setAttribute('style', 'height: 25px; width: 25px;');
-    container.append(box);
+    let square = document.createElement('div');
+    square.setAttribute('style', 'height: 25px; width: 25px;');
+    container.append(square);
 }
 
 //add eventlistener to container
-//when hovered it changes the targets bg to black
+//when hovered it changes the targets bgc to a random color
+//create a function that returns a random number between 0 and 255
+//set bgc to rgb(rand, rand, rand)
+
+function randomNum() {
+    let rand = Math.floor(Math.random() * 256);
+    return rand;
+}
+randomNum();
+
 
 container.addEventListener('mouseover', (e) => {
-    e.target.style.backgroundColor = 'black';
+    
+    if(e.target.classList.contains('clicked') !== true) {
+        e.target.style.backgroundColor = `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
+        console.log(e.target.classList.contains('clicked'))
+        e.target.setAttribute('class', 'clicked')
+    }
+    
+    else {
+        e.target.style.filter = `brightness(${brightnessLvl})`
+    }
 })
 
 //when btn is clicked => prompt num of grid each side and store it in var
