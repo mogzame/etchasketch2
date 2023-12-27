@@ -30,7 +30,9 @@ btn.addEventListener('click', () => {
     console.log(gridNum)
     let squaresNum = gridNum ** 2;
     let squaresDimension = 400 / gridNum;
-    console.log(squaresDimension)
+    while(container.firstChild) {
+        container.removeChild(container.firstChild);
+    };
 
     for (i = 0; i < squaresNum; i++) {
         let square = document.createElement('div');
@@ -38,4 +40,4 @@ btn.addEventListener('click', () => {
         square.style.height = `${squaresDimension}px`;
         container.append(square);
     }
-})
+});
